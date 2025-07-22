@@ -15,8 +15,7 @@ struct WelcomeView: View {
     var body: some View {
         if isActive {
             if isLoggedIn {
-//                HomeView()
-                LoginView()
+                HomeView()
             } else {
                 LoginView()
             }
