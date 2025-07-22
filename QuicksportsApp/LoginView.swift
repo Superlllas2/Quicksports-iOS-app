@@ -8,6 +8,15 @@ import SwiftUI
 
 struct LoginView: View {
     @AppStorage("isLoggedIn") private var isLoggedIn = false
+    @State private var isRegistering = false
+
+    @State private var fullName = ""
+    @State private var email = ""
+    @State private var password = ""
+    @State private var likedSport = ""
+    @State private var sportLevel = ""
+    @State private var acceptTerms = false
+    @State private var newsletter = false
 
     var body: some View {
         ZStack {
@@ -22,34 +31,88 @@ struct LoginView: View {
                 Spacer()
 
                 VStack(spacing: 16) {
-                    Text("Log in to The QuickSport")
-                        .font(.headline)
-                        .foregroundColor(.black)
+                    if isRegistering {
+                        Text("Create an account")
+                            .font(.headline)
+                            .foregroundColor(.black)
 
-                    Button(action: {
-                        isLoggedIn = true
-                    }) {
-                        HStack {
-                            Image(systemName: "globe")
-                            Text("Log in with Google")
+                        TextField("Full name", text: $fullName)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                        TextField("Email", text: $email)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                        SecureField("Password", text: $password)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                        TextField("Liked sport", text: $likedSport)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                        TextField("Level", text: $sportLevel)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                        Toggle("Accept Terms & Conditions", isOn: $acceptTerms)
+                        Toggle("Subscribe to Newsletter", isOn: $newsletter)
+
+                        Button(action: {
+                            isLoggedIn = true
+                        }) {
+                            Text("Register")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.green)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
                         }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                    }
 
-                    Divider()
+                        Button(action: { isRegistering = false }) {
+                            Text("Back to Login")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                        }
+                    } else {
+                        Text("Log in to The QuickSport")
+                            .font(.headline)
+                            .foregroundColor(.black)
 
-                    Button(action: {
-                        isLoggedIn = true
-                    }) {
-                        Text("Log in")
+                        Button(action: {
+                            isLoggedIn = true
+                        }) {
+                            HStack {
+                                Image(systemName: "globe")
+                                Text("Log in with Google")
+                            }
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
+                            .background(Color(.systemGray6))
                             .cornerRadius(10)
+                        }
+
+                        Divider()
+
+                        Button(action: {
+                            isLoggedIn = true
+                        }) {
+                            Text("Log in")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+
+                        Button(action: {
+                            isRegistering = true
+                        }) {
+                            Text("Register")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.green)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
                     }
                 }
                 .padding()
