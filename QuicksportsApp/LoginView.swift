@@ -8,6 +8,7 @@ import SwiftUI
 
 struct LoginView: View {
     @AppStorage("isLoggedIn") private var isLoggedIn = false
+    @State private var showRegister = false
 
     var body: some View {
         ZStack {
@@ -22,32 +23,28 @@ struct LoginView: View {
                 Spacer()
 
                 VStack(spacing: 16) {
-                    Text("Log in to The QuickSport")
+                    Text("Welcome to QuickSport")
                         .font(.headline)
                         .foregroundColor(.black)
 
                     Button(action: {
                         isLoggedIn = true
                     }) {
-                        HStack {
-                            Image(systemName: "globe")
-                            Text("Log in with Google")
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                    }
-
-                    Divider()
-
-                    Button(action: {
-                        isLoggedIn = true
-                    }) {
-                        Text("Log in")
+                        Text("Login")
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+
+                    Button(action: {
+                        showRegister = true
+                    }) {
+                        Text("Register")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.green)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -59,6 +56,9 @@ struct LoginView: View {
 
                 Spacer().frame(height: 40)
             }
+        }
+        .sheet(isPresented: $showRegister) {
+            RegisterView(isLoggedIn: $isLoggedIn)
         }
     }
 }
