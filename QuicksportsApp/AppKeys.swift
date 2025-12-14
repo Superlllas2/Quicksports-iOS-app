@@ -8,4 +8,5 @@ import Foundation
 
 enum AppKeys {
     static let isLoggedIn = "isLoggedIn"
+    static let walletBalance = "walletBalance"
 }

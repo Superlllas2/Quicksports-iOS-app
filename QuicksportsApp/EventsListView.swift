@@ -19,7 +19,6 @@ struct EventsListView: View {
             .padding()
         }
         .background(Color(.systemGroupedBackground))
-        .navigationTitle("Explore")
     }
 }
 
