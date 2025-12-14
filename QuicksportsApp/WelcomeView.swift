@@ -14,7 +14,9 @@ struct WelcomeView: View {
 
     var body: some View {
         if isActive {
-            if isLoggedIn {
+            if false
+            // TODO: Remove hardcoded false here for a further logic
+            {
                 HomeView()
             } else {
                 LoginView()

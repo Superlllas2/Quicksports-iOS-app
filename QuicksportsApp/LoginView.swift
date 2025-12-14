@@ -58,7 +58,7 @@ struct LoginView: View {
             }
         }
         .sheet(isPresented: $showRegister) {
-            RegisterView(isLoggedIn: $isLoggedIn)
+            RegisterStepOneView()
         }
     }
 }
