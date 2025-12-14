@@ -1,3 +1,9 @@
+//
+//  RootView.swift
+//  QuicksportsApp
+//
+//  Created by Илья Невров on 14/12/2025.
+//
 import SwiftUI
 
 struct RootView: View {

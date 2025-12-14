@@ -1,3 +1,10 @@
+//
+//  Match.swift
+//  QuicksportsApp
+//
+//  Created by Илья Невров on 14/12/2025.
+//
+// HARDCODED VALUES FOR THE EVENTS
 import Foundation
 
 struct Match: Identifiable {

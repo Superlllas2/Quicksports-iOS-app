@@ -1,3 +1,9 @@
+//
+//  EventsListView.swift
+//  QuicksportsApp
+//
+//  Created by Илья Невров on 14/12/2025.
+//
 import SwiftUI
 
 struct EventsListView: View {
@@ -40,7 +46,7 @@ struct MatchCardView: View {
             .background(Color(.systemGray5))
             .clipShape(RoundedRectangle(cornerRadius: 14))
 
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 5) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(match.name)
                         .font(.headline)
@@ -50,22 +56,23 @@ struct MatchCardView: View {
                         .foregroundColor(.secondary)
                 }
 
-                HStack(spacing: 8) {
+                HStack() {
                     PillView(text: match.city, icon: "mappin.and.ellipse")
-                    PillView(text: "3", style: .secondary)
-                        .frame(height: 24)
                 }
 
-                HStack(spacing: 8) {
-                    PillView(text: match.playersText, icon: "person.2.fill", style: .info)
-                    PillView(text: match.status.rawValue, style: match.status == .confirmed ? .success : .warning)
-                    PillView(text: "€\(match.formattedPrice)", icon: "eurosign.circle.fill", style: .info)
-                    PillView(text: "\(match.formattedDuration) h", icon: "clock.fill", style: .neutral)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 5) {
+                        PillView(text: match.playersText, icon: "person.2.fill", style: .info)
+                        PillView(text: match.status.rawValue, style: match.status == .confirmed ? .success : .warning)
+                        PillView(text: "€\(match.formattedPrice)", icon: "eurosign.circle.fill", style: .info)
+                        PillView(text: "\(match.formattedDuration) h", icon: "clock.fill", style: .neutral)
 
-                    if let discount = match.discountPercent, let oldPrice = match.oldPrice {
-                        DiscountPillView(discount: discount, oldPrice: oldPrice)
+                        if let discount = match.discountPercent, let oldPrice = match.oldPrice {
+                            DiscountPillView(discount: discount, oldPrice: oldPrice)
+                        }
                     }
                 }
+
             }
             Spacer(minLength: 0)
         }
@@ -145,25 +152,30 @@ struct DiscountPillView: View {
     let oldPrice: Double
 
     var body: some View {
-        HStack(spacing: 4) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text("Save \(discount)% Off")
-                    .font(.caption)
-                    .fontWeight(.bold)
-                Text("€\(String(format: "%.0f", oldPrice))")
-                    .font(.caption2)
-                    .foregroundColor(.secondary)
-                    .strikethrough()
-            }
-            .padding(.leading, 10)
-            .padding(.vertical, 6)
+        HStack(spacing: 6) {
+            Image(systemName: "tag.fill")
+                .font(.caption)
+
+            Text("Save \(discount)% Off")
+                .font(.caption)
+                .fontWeight(.bold)
+                .lineLimit(1)
+
+            Text("€\(String(format: "%.0f", oldPrice))")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .strikethrough()
+                .lineLimit(1)
         }
-        .padding(.trailing, 10)
+        .fixedSize(horizontal: true, vertical: false)
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
         .background(Color(.systemBlue).opacity(0.15))
         .foregroundColor(Color(.systemBlue))
         .clipShape(Capsule())
     }
 }
+
 
 #Preview {
     NavigationStack {
