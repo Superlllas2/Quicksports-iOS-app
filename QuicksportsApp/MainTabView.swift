@@ -8,10 +8,12 @@ struct MainTabView: View {
                     Label("Home", systemImage: "house.fill")
                 }
 
-            PlaceholderView(title: "Explore")
-                .tabItem {
-                    Label("Explore", systemImage: "safari")
-                }
+            NavigationStack {
+                EventsListView()
+            }
+            .tabItem {
+                Label("Explore", systemImage: "safari")
+            }
 
             PlaceholderView(title: "Bookings")
                 .tabItem {
