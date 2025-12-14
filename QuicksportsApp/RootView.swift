@@ -14,12 +14,15 @@ struct RootView: View {
     var body: some View {
         ZStack {
             if isLoggedIn {
+                // show main tabs
                 MainTabView()
             } else {
+                // show login flow
                 LoginView()
             }
 
             if showSplash {
+                // overlay splash
                 SplashView()
                     .opacity(splashOpacity)
                     .transition(.opacity)
@@ -29,6 +32,7 @@ struct RootView: View {
     }
 
     private func startSplash() {
+        // fade splash out
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             withAnimation(.easeOut(duration: 0.3)) {
                 splashOpacity = 0.0
