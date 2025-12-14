@@ -36,7 +36,7 @@ struct ProfileView: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text("Hi Ilia Nevrov, welcome!")
                     .font(.headline)
-                Text("ilia.nevrov@example.com")
+                Text("ilia@nevrov.org")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -44,6 +44,8 @@ struct ProfileView: View {
             Spacer()
 
             VStack(spacing: 8) {
+                // EDIT PROFILE BUTTON - NOT WORKING
+                // TODO: MAKE EDIT PROFILE WORKING
                 Button {
                 } label: {
                     Text("Edit profile")
@@ -55,10 +57,11 @@ struct ProfileView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
 
+                // WALLET BUTTON
                 NavigationLink(destination: WalletView().navigationTitle("Wallet")) {
                     Text("Wallet")
                         .font(.subheadline)
-                        .padding(.horizontal, 14)
+                        .padding(.horizontal, 29)
                         .padding(.vertical, 8)
                         .background(Color(.systemBlue))
                         .foregroundColor(.white)

@@ -2,7 +2,7 @@
 //  Match.swift
 //  QuicksportsApp
 //
-//  Created by Илья Невров on 14/12/2025.
+//  Created by ChatGPT on 14/12/2025.
 //
 // HARDCODED VALUES FOR THE EVENTS
 import Foundation
@@ -57,7 +57,7 @@ struct Match: Identifiable {
                 name: "Varviksweg Wed - elo 3+",
                 gameDate: DateComponents(calendar: .current, year: 2024, month: 12, day: 17, hour: 18, minute: 0).date ?? Date(),
                 city: "Enschede",
-                locationImageURL: URL(string: "https://images.pexels.com/photos/109969/pexels-photo-109969.jpeg?auto=compress&cs=tinysrgb&w=800")!,
+                locationImageURL: URL(string: "https://images.pexels.com/photos/512680/pexels-photo-512680.jpeg?auto=compress&cs=tinysrgb&w=800")!,
                 status: .pending,
                 minPlayers: 10,
                 currentPlayers: 9,
@@ -85,7 +85,7 @@ struct Match: Identifiable {
                 name: "Pathmoshal Sunday Community Game",
                 gameDate: DateComponents(calendar: .current, year: 2024, month: 12, day: 22, hour: 16, minute: 0).date ?? Date(),
                 city: "Enschede",
-                locationImageURL: URL(string: "https://images.pexels.com/photos/2394507/pexels-photo-2394507.jpeg?auto=compress&cs=tinysrgb&w=800")!,
+                locationImageURL: URL(string: "https://images.pexels.com/photos/114295/pexels-photo-114295.jpeg?auto=compress&cs=tinysrgb&w=800")!,
                 status: .pending,
                 minPlayers: 10,
                 currentPlayers: 0,

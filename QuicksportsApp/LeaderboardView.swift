@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LeaderboardView: View {
     private let players: [(name: String, score: Int)] = [
-        ("Alex Morgan", 980),
+        ("Ilia Nevrov", 99999999999999999),
         ("Sam Rivera", 965),
         ("Taylor Kim", 952),
         ("Jordan Lee", 940),
