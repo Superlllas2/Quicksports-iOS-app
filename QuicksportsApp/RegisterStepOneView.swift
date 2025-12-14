@@ -3,7 +3,6 @@ import SwiftUI
 struct RegisterStepOneView: View {
     @State private var email = ""
     @State private var password = ""
-    @State private var goToNextStep = false
 
     var body: some View {
         VStack(spacing: 40) {
@@ -21,7 +20,7 @@ struct RegisterStepOneView: View {
                     .padding()
                     .background(Color(.secondarySystemBackground))
                     .cornerRadius(10)
-                
+
                 SecureField("Password", text: $password)
                     .padding()
                     .background(Color(.secondarySystemBackground))
@@ -62,21 +61,24 @@ struct RegisterStepOneView: View {
 
             Spacer()
 
-            // Continue to next page
-            NavigationLink(destination: RegisterStepTwoView(), isActive: $goToNextStep) {
-                Button("Continue") {
-                    goToNextStep = true
-                }
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(10)
+            NavigationLink(destination: RegisterStepTwoView()) {
+                Text("Continue")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
             }
             .padding(.horizontal, 32)
             .padding(.bottom, 20)
         }
         .navigationTitle("Register")
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+#Preview {
+    NavigationStack {
+        RegisterStepOneView()
     }
 }

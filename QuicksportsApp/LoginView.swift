@@ -7,58 +7,55 @@
 import SwiftUI
 
 struct LoginView: View {
-    @AppStorage("isLoggedIn") private var isLoggedIn = false
-    @State private var showRegister = false
+    @AppStorage(AppKeys.isLoggedIn) private var isLoggedIn = false
 
     var body: some View {
-        ZStack {
-            // Background image (with logo already inside)
-            Image("LoginBackground")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
+        NavigationStack {
+            ZStack {
+                // Background image (with logo already inside)
+                Image("LoginBackground")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
 
-            // White rounded panel with login controls
-            VStack {
-                Spacer()
+                // White rounded panel with login controls
+                VStack {
+                    Spacer()
 
-                VStack(spacing: 16) {
-                    Text("Welcome to QuickSport")
-                        .font(.headline)
-                        .foregroundColor(.black)
+                    VStack(spacing: 16) {
+                        Text("Welcome to QuickSport")
+                            .font(.headline)
+                            .foregroundColor(.black)
 
-                    Button(action: {
-                        isLoggedIn = true
-                    }) {
-                        Text("Login")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                        Button(action: {
+                            isLoggedIn = true
+                        }) {
+                            Text("Login")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+
+                        NavigationLink(destination: RegisterStepOneView()) {
+                            Text("Register")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.green)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
                     }
+                    .padding()
+                    .background(Color.white.opacity(0.95))
+                    .cornerRadius(20)
+                    .padding()
 
-                    Button(action: {
-                        showRegister = true
-                    }) {
-                        Text("Register")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.green)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
+                    Spacer().frame(height: 40)
                 }
-                .padding()
-                .background(Color.white.opacity(0.95))
-                .cornerRadius(20)
-                .padding()
-
-                Spacer().frame(height: 40)
             }
-        }
-        .sheet(isPresented: $showRegister) {
-            RegisterStepOneView()
+            .navigationBarHidden(true)
         }
     }
 }

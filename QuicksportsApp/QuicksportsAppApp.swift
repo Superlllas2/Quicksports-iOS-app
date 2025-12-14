@@ -11,7 +11,7 @@ import SwiftUI
 struct QuicksportsAppApp: App {
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            RootView()
         }
     }
 }
